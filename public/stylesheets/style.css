@@ -7156,12 +7156,35 @@ a.text-dark:hover, a.text-dark:focus {
 body {
   margin-bottom: 60px; }
 
-body > .container {
-  padding-top: 60px; }
+#page-title {
+  position: relative;
+  padding: 4rem 0;
+  background-color: #F5F5F5;
+  border-bottom: 1px solid #EEE; }
+
+#page-title .container {
+  position: relative; }
+
+#page-title h1 {
+  font-size: 4.5rem;
+  font-weight: 600;
+  letter-spacing: 2px;
+  color: rgba(255, 255, 255, 0.9);
+  text-shadow: 2px 2px 5px #000; }
+
+#page-title span {
+  display: block;
+  margin-top: 10px;
+  font-weight: 300;
+  font-size: 1.75rem;
+  color: rgba(255, 255, 255, 0.9);
+  text-shadow: 2px 2px 5px #000; }
+
+#content {
+  position: relative;
+  background-color: #FFF; }
 
 .footer {
-  position: absolute;
-  bottom: 0;
   width: 100%;
   height: 60px;
   line-height: 60px;

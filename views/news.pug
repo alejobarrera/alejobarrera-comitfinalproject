@@ -1,5 +1,59 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
+  section#page-title(
+    style="background-image: url('/images/headers/header-news.jpg'); padding: 120px 0;" 
+    data-bottom-top="background-position:0px 300px;" 
+    data-top-bottom="background-position:0px -300px;"
+  )
+    .container.clearfix
+      h1= title
+      span Discover the latest news, events and useful information for you
+  section#content.my-5
+    .container.clearfix
+      .row
+        .col-md-12.mb-5
+          h2 Recent Articles
+        .col-md-4.mb-4
+          .card
+            img(
+              class="card-img-top" 
+              src="/images/news/examplenews-01.jpg" 
+              alt="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+            )           
+            .card-body
+              h3.card-title Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              p.card-text Nunc at faucibus nibh. Proin ornare diam et dapibus condimentum. Aliquam erat volutpat. Phasellus tristique luctus sem, eu dapibus orci pharetra quis. Vivamus vel diam ornare, tempor neque eu, pulvinar mauris. Morbi vestibulum ultricies fermentum. Donec pharetra eros arcu, quis mollis neque mollis ut.
+
+        .col-md-4.mb-4
+          .card
+            img(
+              class="card-img-top" 
+              src="/images/news/examplenews-02.jpg" 
+              alt="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+            )           
+            .card-body
+              h3.card-title Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              p.card-text Nunc at faucibus nibh. Proin ornare diam et dapibus condimentum. Aliquam erat volutpat. Phasellus tristique luctus sem, eu dapibus orci pharetra quis. Vivamus vel diam ornare, tempor neque eu, pulvinar mauris. Morbi vestibulum ultricies fermentum. Donec pharetra eros arcu, quis mollis neque mollis ut.
+
+        .col-md-4.mb-3
+          .card
+            img(
+              class="card-img-top" 
+              src="/images/news/examplenews-03.jpg" 
+              alt="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+            )           
+            .card-body
+              h3.card-title Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              p.card-text Nunc at faucibus nibh. Proin ornare diam et dapibus condimentum. Aliquam erat volutpat. Phasellus tristique luctus sem, eu dapibus orci pharetra quis. Vivamus vel diam ornare, tempor neque eu, pulvinar mauris. Morbi vestibulum ultricies fermentum. Donec pharetra eros arcu, quis mollis neque mollis ut.
+
+        .col-md-4.mb-3
+          .card
+            img(
+              class="card-img-top" 
+              src="/images/news/examplenews-04.jpg" 
+              alt="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+            )           
+            .card-body
+              h3.card-title Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              p.card-text Nunc at faucibus nibh. Proin ornare diam et dapibus condimentum. Aliquam erat volutpat. Phasellus tristique luctus sem, eu dapibus orci pharetra quis. Vivamus vel diam ornare, tempor neque eu, pulvinar mauris. Morbi vestibulum ultricies fermentum. Donec pharetra eros arcu, quis mollis neque mollis ut.
