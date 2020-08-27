@@ -18,6 +18,7 @@ block content
               type="text"
               aria-describedby="firstnameHelp"
               placeholder="Enter your firstname"
+              maxlength="150"
               class=errors.firstname ? "is-invalid" : ""
               value=contact.firstname
               required
@@ -32,6 +33,7 @@ block content
               type="text"
               aria-describedby="lastnameHelp"
               placeholder="Enter your lastname"
+              maxlength="150"
               class=errors.lastname ? "is-invalid" : ""
               value=contact.lastname
               required
@@ -46,6 +48,7 @@ block content
               type="tel"
               aria-describedby="phoneHelp"
               placeholder="Enter your phone number"
+              maxlength="15"
               class=errors.phone ? "is-invalid" : ""
               value=contact.phone
               required
@@ -59,7 +62,8 @@ block content
               name="email"
               type="email"
               aria-describedby="emailHelp"
-              placeholder="Enter your email"            
+              placeholder="Enter your email"   
+              maxlength="255"         
               class=errors.email ? "is-invalid" : ""
               value=contact.email
               required
@@ -74,6 +78,7 @@ block content
               type="text"
               aria-describedby="subjectHelp"
               placeholder="Enter a subject"
+              maxlength="255"
               class=errors.subject ? "is-invalid" : ""
               value=contact.subject
               required
@@ -87,6 +92,7 @@ block content
               name="comment"
               aria-describedby="commentHelp"
               placeholder="Enter your comment or message"
+              maxlength="2000"
               class=errors.comment ? "is-invalid" : ""
               value=contact.comment
               required
