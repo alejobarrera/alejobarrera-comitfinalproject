@@ -1,0 +1,143 @@
+extends ../layout
+
+block content
+  section#page-title(
+    style="background-image: url('/images/headers/header-userszone.jpg'); padding: 120px 0;" 
+    data-bottom-top="background-position:0px 300px;" 
+    data-top-bottom="background-position:0px -300px;"
+  )
+    .container.clearfix
+      h1= title
+      span We are here to answer all your questions about us or our services.
+
+  section#content.my-5
+    .container.cleanfix
+      .row
+        .col-md-4
+          ul.list-group
+            li.list-group-item
+              a(data-toggle="collapse", href="#posts") Posts
+              #posts.panel-collapse.collapse
+                ul.list-group
+                  li.list-group-item
+                    a(href="/admin/listpost") All posts
+                  li.list-group-item
+                    a(href="/admin/add-post") New post
+
+            li.list-group-item
+              a(data-toggle="collapse", href="#courses") Courses
+              #courses.panel-collapse.collapse
+                ul.list-group
+                  li.list-group-item
+                    a(href="/admin/listpost") All courses
+                  li.list-group-item
+                    a(href="/admin/add-post") New course
+
+            li.list-group-item
+              a(data-toggle="collapse", href="#contacts") Contacts
+              #contacts.panel-collapse.collapse
+                ul.list-group
+                  li.list-group-item
+                    a(href="/admin/listpost") All Contacts
+
+
+        .col-md-8
+          h2 Add new post
+          p Fill the form with the information about news, events or announcements. Remember the fields with (*) asterisk are mandatories. 
+          form(method="POST")
+            .form-row
+              .col-12.form-group
+                label(for="headline" class="font-weight-bold") Headline (*)
+                input.form-control#headline(
+                  name="headline"
+                  type="text"
+                  aria-describeby="headlineHelp"
+                  placeholder="Enter the post's headline"
+                  maxlength="255"
+                  class=errors.headline ? "is-invalid" : ""
+                  value=post.headline
+                  required
+                )
+                if errors.headline
+                  #headline.invalid-feedback= errors.firstname.message 
+
+              .col-12.form-group
+                label(for="abstract" class="font-weight-bold") Abstract (*)
+                textarea.form-control#abstract(
+                  name="abstract", 
+                  placeholder="Enter the post's abstract",
+                  cols="30", 
+                  rows="10")
+
+              .col-12.form-group
+                label(for="image" class="font-weight-bold") Image (*)
+                input.form-control#image(
+                  type="file", 
+                  name="image")
+
+              .col-12.form-group
+                label(for="fulltext" class="font-weight-bold") Fulltext (*)
+                textarea.form-control#fulltext(
+                  name="fulltext", 
+                  placeholder="Enter the post's fulltext"
+                  cols="30", 
+                  rows="10")
+
+              .col-12.form-group
+                label(for="author" class="font-weight-bold") Author
+                input.form-control#author(
+                  name="author"
+                  type="text"
+                  placeholder="Enter the post's author"
+                  aria-describeby="authorHelp"
+                  maxlength="255"
+                  class=errors.author ? "is-invalid" : ""
+                  value=post.author
+                )
+                if errors.author
+                  #author.invalid-feedback= errors.author.message 
+
+              .col-12.form-group
+                label(for="authoremail" class="font-weight-bold") Author's e-mail
+                input.form-control#authoremail(
+                  name="authoremail"
+                  type="email"
+                  aria-describeby="authoremailHelp"
+                  placeholder="Enter the author's e-mail"
+                  maxlength="255"
+                  class=errors.authoremail ? "is-invalid" : ""
+                  value=post.authoremail
+                )
+                if errors.authoremail
+                  #authoremail.invalid-feedback= errors.authoremail.message 
+
+              .col-12.form-group
+                label(for="source" class="font-weight-bold") Source
+                input.form-control#source(
+                  name="source"
+                  type="text"
+                  aria-describeby="sourceHelp"
+                  placeholder="Enter the post's source"
+                  maxlength="255"
+                  class=errors.source ? "is-invalid" : ""
+                  value=post.source
+                )
+                if errors.source
+                  #source.invalid-feedback= errors.source.message 
+
+              .col-12.form-group
+                label(for="sourceurl" class="font-weight-bold") Source website
+                input.form-control#sourceurl(
+                  name="sourceurl"
+                  type="url"
+                  aria-describeby="sourceurlHelp"
+                  placeholder="Enter the source website"
+                  maxlength="255"
+                  class=errors.sourceurl ? "is-invalid" : ""
+                  value=post.sourceurl
+                )
+                if errors.sourceurl
+                  #sourceurl.invalid-feedback= errors.sourceurl.message 
+
+              button.btn.btn-primary(type="submit") Submit
+                

@@ -12,7 +12,8 @@ var contactSchema = new Schema ({
     },
     phone: {        
         type: String,
-        required: [true, 'Phone is required.']},
+        required: [true, 'Phone is required.']
+    },
     email: {
         type: String,
         lowercase: true,
@@ -25,9 +26,9 @@ var contactSchema = new Schema ({
         type: String,
         required: [true, 'Subject is required.']
     },
-    message: {
+    comment: {
         type: String,
-        required: [true, 'Message is required.']
+        required: [true, 'Comment or message is required.']
     },
 },
 {

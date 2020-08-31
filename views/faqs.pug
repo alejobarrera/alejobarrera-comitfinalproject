@@ -1,5 +1,14 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
+  section#page-title(
+    style="background-image: url('/images/headers/header-faqs.jpg'); padding: 120px 0;" 
+    data-bottom-top="background-position:0px 300px;" 
+    data-top-bottom="background-position:0px -300px;"
+  )
+    .container.clearfix
+      h1= title
+      span All your Questions answered in one place
+      
+  section#content.my-5
+    .container.clearfix

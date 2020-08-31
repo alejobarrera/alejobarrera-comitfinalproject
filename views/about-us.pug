@@ -1,5 +1,89 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
+  section#page-title(
+    style="background-image: url('/images/headers/header-aboutus.jpg'); padding: 120px 0;" 
+    data-bottom-top="background-position:0px 300px;" 
+    data-top-bottom="background-position:0px -300px;"
+  )
+    .container.clearfix
+      h2= title
+      span Learn about the history of our organization 
+
+  section#content
+    .container.clearfix
+      .row.custom-mb-30
+        .col-lg-4
+          .heading-block
+            .heading-title
+              h3 What we <span>do</span>
+            p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi quidem minus id omnis, nam expedita, ea fuga commodi voluptas iusto, hic autem deleniti dolores explicabo labore enim repellat earum perspiciatis.
+        .col-lg-4
+          .heading-block
+            .heading-title
+              h3 Our <span>mission</span>
+            p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi quidem minus id omnis, nam expedita, ea fuga commodi voluptas iusto, hic autem deleniti dolores explicabo labore enim repellat earum perspiciatis.
+        .col-lg-4
+          .heading-block
+            .heading-title
+              h3 Our <span>vission</span>
+            p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi quidem minus id omnis, nam expedita, ea fuga commodi voluptas iusto, hic autem deleniti dolores explicabo labore enim repellat earum perspiciatis.
+   
+    .section.bg-color
+      .container.clearfix
+        .row
+          .col-12
+            h3  HOW ARE WE DIFFERENT?
+            p We are a non-profit, so we make no money from referrals, we aim to strengthen the eco-system, help companies make socially responsible decisions and provide opportunities to people trying to enter the IT sector.
+
+    .container.clearfix
+      .row  
+        .col-4
+          h4.text-center Increase customer satisfaction    
+          p.text-center Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi quidem minus id omnis.      
+        .col-4
+          h4.text-center Gain market position
+          p.text-center Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi quidem minus id omnis.
+        .col-4
+          h4.text-center Create new services and courses
+          p.text-center Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi quidem minus id omnis.
+
+    .container.clearfix
+      .row
+        .col-12
+          h3 Team
+        .col-lg-4
+          .team.row.align-items-center
+            .team-image.col-sm-6
+              img(src="/images/team/example01.jpg", alt="")
+            .col-sm-6
+              h4 John Doe
+              span Director
+              p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi quidem minus id omnis, 
+
+        .col-lg-4
+          .team.row.align-items-center
+            .team-image.col-sm-6
+              img(src="/images/team/example02.jpg", alt="")
+            .col-sm-6
+              h4 John Doe
+              span Director
+              p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi quidem minus id omnis, 
+
+        .col-lg-4
+          .team.row.align-items-center
+            .team-image.col-sm-6
+              img(src="/images/team/example03.jpg", alt="")
+            .col-sm-6
+              h4 John Doe
+              span Director
+              p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi quidem minus id omnis, 
+
+        .col-lg-4
+          .team.row.align-items-center
+            .team-image.col-sm-6
+              img(src="/images/team/example04.jpg", alt="")
+            .col-sm-6
+              h4 John Doe
+              span Director
+              p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quasi quidem minus id omnis, 

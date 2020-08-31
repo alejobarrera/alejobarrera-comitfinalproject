@@ -2,7 +2,7 @@ var express = require('express');
 var Contact = require('../models/contact');
 
 exports.contactForm = function(req, res) {
-    res.render('contact/new', { contact: {}, errors: [] });
+    res.render('contact/add-contact', { title: 'Contact us', contact: {}, errors: [] });
 };
 
 exports.contactCreate = function(req, res) {
@@ -25,6 +25,7 @@ exports.contactCreate = function(req, res) {
     newContact.save(function(err) {
       if (err) {
           res.render('contact/new', { contact: newContact, errors: err.errors });
+          console.log(err);
       } else {
           res.redirect('/');
           console.log('Contact saved successfully!');
