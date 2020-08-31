@@ -1,0 +1,50 @@
+extends ../layout
+
+block content
+  section#page-title(
+    style="background-image: url('/images/headers/header-userszone.jpg'); padding: 120px 0;" 
+    data-bottom-top="background-position:0px 300px;" 
+    data-top-bottom="background-position:0px -300px;"
+  )
+    .container.clearfix
+      h1= title
+      span We are here to answer all your questions about us or our services.
+
+  section#content.my-5
+    .container.cleanfix
+      .row
+        .col-md-4
+          include ../includes/users-menu
+        .col-md-8
+          h2 Add new faq
+          p Fill the form with the frecuent answers questions. Remember the fields with (*) asterisk are mandatories. 
+          form(method="POST")
+            .form-row
+              .col-12.form-group
+                label(for="question" class="font-weight-bold") Question (*)
+                input.form-control#question(
+                  name="question"
+                  type="text"
+                  aria-describeby="questionHelp"
+                  placeholder="Enter a question"
+                  maxlength="255"
+                  class=errors.question ? "is-invalid" : ""
+                  value=faq.question
+                  required
+                  )
+                if errors.question
+                  #question.invalid-feedback= errors.question.message
+  
+              .col-12.form-group
+                label(for="answer" class="font-weight-bold") Answer (*)
+                textarea.form-control#answer(
+                  name="answer", 
+                  placeholder="Enter an answer"
+                  cols="30", 
+                  rows="10",
+                  required
+                  )
+                if errors.answer
+                  #answer.invalid-feedack= errors.answer.message
+
+            button.btn.btn-primary(type="submit") Submit

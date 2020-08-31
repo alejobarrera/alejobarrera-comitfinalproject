@@ -7162,7 +7162,7 @@ h1, h2, h3, h4, h5, h6 {
   font-family: 'Noto Serif', serif; }
 
 .custom-navbar {
-  background: #00406B;
+  background: rgba(0, 64, 107, 0.8);
   font-size: 1rem; }
 
 .custom-navbar a {

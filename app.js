@@ -24,6 +24,7 @@ var CoursesRouter = require('./routes/courses');
 var NewsRouter = require('./routes/listposts');
 var AddPostRouter = require('./routes/newpost');
 var FAQsRouter = require('./routes/faqs');
+var AddFAQRouter = require('./routes/newfaq');
 var ContactRouter = require('./routes/contact');
 var ListContactRouter = require('./routes/listcontact');
 
@@ -52,6 +53,7 @@ app.use('/', AddPostRouter);
 app.use('/services', ServicesRouter);
 app.use('/courses', CoursesRouter);
 app.use('/faqs', FAQsRouter);
+app.use('/', AddFAQRouter);
 app.use('/', ContactRouter);
 app.use('/', ListContactRouter);
 

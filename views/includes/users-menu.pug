@@ -1,4 +1,34 @@
 ul.list-group
- li.list-group-item Post
- li.list-group-item Courses
- li.list-group-item Contact
+    li.list-group-item
+        a(data-toggle="collapse", href="#posts") Posts
+        #posts.panel-collapse.collapse
+            ul.list-group
+                li.list-group-item
+                    a(href="/admin/listpost") All posts
+                li.list-group-item
+                    a(href="/admin/add-post") New post
+
+    li.list-group-item
+        a(data-toggle="collapse", href="#courses") Courses
+        #courses.panel-collapse.collapse
+            ul.list-group
+                li.list-group-item
+                    a(href="/admin/listpost") All courses
+                li.list-group-item
+                    a(href="/admin/add-post") New course
+        
+    li.list-group-item
+        a(data-toggle="collapse", href="#faqs") FAQs
+        #faqs.panel-collapse.collapse
+            ul.list-group
+                li.list-group-item
+                    a(href="/admin/listpost") All FAQs
+                li.list-group-item
+                    a(href="/admin/add-faq") New FAQ
+
+    li.list-group-item
+        a(data-toggle="collapse", href="#contacts") Contacts
+        #contacts.panel-collapse.collapse
+            ul.list-group
+                li.list-group-item
+                  a(href="/admin/listpost") All Contacts
