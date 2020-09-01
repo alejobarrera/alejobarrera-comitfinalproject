@@ -3,7 +3,7 @@ extends layout
 block content
 
   section#slider
-    #carousel.carousel.slide.slider-element.min-vh-60.min-vh-md-100(data-ride="carousel")
+    #carousel.carousel.carousel-element(data-ride="carousel")
       ul.carousel-indicators
         li(
           data-target="#carousel" 
@@ -18,28 +18,30 @@ block content
           data-target="#carousel" 
           data-slide-to="2"
         )
-
       .carousel-inner
-        .carousel-item.active
-          img(
-            src="/images/carousel/carousel-image1.jpg" 
-            alt="Los Angeles" 
-            width= "1980"
-            height= "600"
+        .carousel-item.min-vh-60.min-vh-md-100.active
+          .container
+            .carousel-caption.carousel-caption-center
+              h2 Lorem ipsum dolor sit
+              p.d-none.d-sm-block Mauris et gravida lacus. Proin pulvinar volutpat aliquam. Nam quis quam leo. Proin aliquet in leo eget elementum.
+          .carousel-bg(
+            style="background-image: url('/images/carousel/carousel-image1.jpg');"
           )
-        .carousel-item
-          img(
-            src="/images/carousel/carousel-image2.jpg" 
-            alt="Los Angeles" 
-            width= "1980"
-            height= "600"
+        .carousel-item.min-vh-60.min-vh-md-100
+          .container
+            .carousel-caption.carousel-caption-center
+              h2 Duis interdum ipsum molestie
+              p.d-none.d-sm-block Quisque ante libero, dictum vitae quam a, congue eleifend nulla. Quisque quis metus dui. Sed eleifend urna quis arcu tincidunt luctus.
+          .carousel-bg(
+            style="background-image: url('/images/carousel/carousel-image2.jpg');"
           )
-        .carousel-item
-          img(
-            src="/images/carousel/carousel-image3.jpg" 
-            alt="Los Angeles" 
-            width= "1980"
-            height= "600"
+        .carousel-item.min-vh-60.min-vh-md-100
+          .container
+            .carousel-caption.carousel-caption-center
+              h2 Morbi imperdiet urna quis
+              p.d-none.d-sm-block Duis commodo a nisi ut eleifend. Nunc pellentesque tristique felis, nec aliquam nulla. Mauris vitae neque vel risus varius rutrum.
+          .carousel-bg(
+            style="background-image: url('/images/carousel/carousel-image3.jpg');"
           )
 
       a(
@@ -54,7 +56,16 @@ block content
         data-slide="next")
         span(class="carousel-control-next-icon")
  
-  section#content.my-5
+  section#content
+    .section.bg-color
+      .container.clearfix
+        .row
+          .col-lg-9
+            h3 What we offer
+            span Our organizaton offers a variety of programs for you. All our programs are free and are developed throug education in classroom or virtual.
+          .col-lg-3
+            a(href="/services" class="btn btn-primary button-rounded m-0") Our services
+
     .section.my-0
       .row.clearfix.align-items-stretch
         .col-lg-6(style="background: url('/images/home/who-we-are.jpg') center center no-repeat; background-size: cover;")
@@ -104,11 +115,4 @@ block content
                   p.card-text Nunc at faucibus nibh. Proin ornare diam et dapibus condimentum. Aliquam erat volutpat. Phasellus tristique luctus sem, eu dapibus orci pharetra quis. Vivamus vel diam ornare, tempor neque eu, pulvinar mauris. Morbi vestibulum ultricies fermentum. Donec pharetra eros arcu, quis mollis neque mollis ut.
 
 
-    .section.bg-color
-      .container.clearfix
-        .row
-          .col-lg-9
-            h3 What we offer
-            span Our organizaton offers a variety of programs for you. All our programs are free and are developed throug education in classroom or virtual.
-          .col-lg-3
-            a(href="#" class="btn btn-primary button-rounded m-0") Our services
+
