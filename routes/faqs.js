@@ -1,9 +1,18 @@
 var express = require('express');
+var faqsController = require('../controllers/faqs');
 var router = express.Router();
 
-/* GET home page. */
-router.get('/', function(req, res, next) {
-    res.render('FAQs', { title: 'FAQs' });
-});
+router 
+  .route('/')
+  .get(faqsController.list)
+
+router
+  .route('/add-faq')
+  .get(faqsController.addForm)
+  .post(faqsController.faqCreate)
+
+  router 
+  .route('/table-faqs')
+  .get(faqsController.table)
 
 module.exports = router;

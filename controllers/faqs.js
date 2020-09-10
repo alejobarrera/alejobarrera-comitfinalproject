@@ -1,8 +1,26 @@
 var express = require('express');
 var Faq = require('../models/faq');
 
-exports.addfaqForm = function(req, res) {
+exports.list = function(req, res) {
+    Faq.find(function (err, faqs) {
+        if (err) console.log(err)
+        
+        console.log(faqs)
+        res.render('faqs/list', { title: 'FAQs', faqs: faqs });
+    });
+};
+
+exports.addForm = function(req, res) {
     res.render('faqs/add-faq', { title: 'New FAQ', faq: {}, errors: [] });
+};
+
+exports.table = function(req, res) {
+    Faq.find(function (err, faqs) {
+        if (err) console.log(err)
+        
+        console.log(faqs)
+        res.render('faqs/table-faqs', { title: 'All faqs', faqs: faqs });
+    });
 };
 
 exports.faqCreate = function(req, res) {
@@ -19,7 +37,7 @@ exports.faqCreate = function(req, res) {
           res.render('faqs/add-faq', { faq: newFaq, errors: err.errors });
           console.log(err);
       } else {
-          res.redirect('/');
+          res.redirect('table-faqs');
           console.log('Faq saved successfully!');
       }
 

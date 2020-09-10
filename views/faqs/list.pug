@@ -1,0 +1,30 @@
+extends ../layout
+
+block content
+  section#page-title(
+    style="background-image: url('/images/headers/header-faqs.jpg'); padding: 120px 0;" 
+    data-bottom-top="background-position:0px 300px;" 
+    data-top-bottom="background-position:0px -300px;"
+  )
+    .container.clearfix
+      h2= title
+      span All your Questions answered in one place
+      
+  section#content.custom-my-80
+    .container.clearfix
+      .row
+        .col-md-12.mb-5
+          h2 Frequently asked questions
+          p A list of questions and answers relating to our organization.
+      .row
+        .col-md-8
+          #accordion
+            each faq in faqs
+              .card
+                .card-header
+                  a.card-link(data-toggle="collapse" href="#" + faq.id)= faq.question
+                div(id=faq.id class="collapse" data-parent="#accordion")
+                  .card-body
+                    p= faq.answer
+
+        .col-md-4

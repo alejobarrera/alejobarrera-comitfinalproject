@@ -1,9 +1,22 @@
 var express = require('express');
+var servicesController = require('../controllers/services');
 var router = express.Router();
 
-/* GET home page. */
-router.get('/', function(req, res, next) {
-    res.render('Services', { title: 'Services' });
-});
+router 
+  .route('/')
+  .get(servicesController.list)
+
+router
+  .route('/add-service')
+  .get(servicesController.addForm)
+  .post(servicesController.Create)
+
+  router 
+  .route('/table-services')
+  .get(servicesController.table)
+
+router
+  .route('/:id')
+  .get(servicesController.fulltext)
 
 module.exports = router;

@@ -19,13 +19,15 @@ db.once('open', function() {
 
 var indexRouter = require('./routes/index');
 var AboutusRouter = require('./routes/about-us');
+
 var ServicesRouter = require('./routes/services');
+
 var CoursesRouter = require('./routes/courses');
 
 var PostRouter = require('./routes/posts');
-
 var FAQsRouter = require('./routes/faqs');
-var AddFAQRouter = require('./routes/newfaq');
+
+
 var ContactRouter = require('./routes/contact');
 var ListContactRouter = require('./routes/listcontact');
 
@@ -49,13 +51,13 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/about-us', AboutusRouter);
+app.use('/services', ServicesRouter);
+
+app.use('/courses', CoursesRouter);
 
 app.use('/posts', PostRouter);
-
-app.use('/services', ServicesRouter);
-app.use('/courses', CoursesRouter);
 app.use('/faqs', FAQsRouter);
-app.use('/', AddFAQRouter);
+
 app.use('/', ContactRouter);
 app.use('/', ListContactRouter);
 
