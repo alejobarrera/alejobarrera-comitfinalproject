@@ -1,0 +1,30 @@
+extends ../layout
+
+block content
+  section#page-title(
+    style="background-image: url('/images/headers/header-news.jpg'); padding: 120px 0;" 
+    data-bottom-top="background-position:0px 300px;" 
+    data-top-bottom="background-position:0px -300px;"
+  )
+    .container.clearfix
+      h2= title
+      span Discover the latest news, events and useful information for you
+      
+  section#content.custom-my-80
+    .container.clearfix
+      .row
+        .col-md-4
+          include ../includes/users-menu
+        .col-md-8
+          h3=title
+          p Click on the title to edit the post
+          table.table.table-striped
+            thead.thead-dark
+                tr 
+                  th Ítem
+                  th Date
+            tbody
+              each course in courses
+                tr
+                  td=course.headline
+                  td=course.createdAt

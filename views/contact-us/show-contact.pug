@@ -1,0 +1,37 @@
+extends ../layout
+
+block content
+  section#page-title(
+    style="background-image: url('/images/headers/header-userszone.jpg'); padding: 120px 0;" 
+  )
+    .container.clearfix
+      h2= title
+      span= subtitle
+
+  section#content.my-5
+    .container-fluid.cleanfix
+      .row
+        .col-md-3
+          include ../includes/users-menu
+        .col-md-9.px-5
+          h3= sectiontitle
+          .row
+            .col-md-6
+              span Firstname
+              span= contact.firstname
+            .col-md-6
+              span Lastname
+              span= contact.lastname
+            .col-md-6
+              span Phone
+              span= contact.phone
+            .col-md-6
+              span Email
+              span= contact.email
+            .col-md-12
+              span Subject
+              span= contact.subject
+            .col-md-12
+              span= contact.comment
+
+

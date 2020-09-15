@@ -5,6 +5,7 @@
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  */
 @import url("https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,700;1,400;1,700&family=Roboto&display=swap");
+@import url("https://use.fontawesome.com/releases/v5.12.1/css/all.css");
 :root {
   --blue: #007bff;
   --indigo: #6610f2;
@@ -7324,5 +7325,16 @@ h1, h2, h3, h4, h5, h6 {
   font-size: 0.9rem;
   padding: 20px 0px;
   border-top: 5px solid #00206B; }
+
+.thead-custom-bg {
+  background-color: #00406B;
+  color: #FFFFFF;
+  font-weight: bold;
+  text-align: center; }
+
+.btn-primary {
+  color: #fff;
+  background-color: #00406B;
+  border-color: #00406B; }
 
 /*# sourceMappingURL=style.css.map */

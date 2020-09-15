@@ -2,51 +2,36 @@ extends ../layout
 
 block content
   section#page-title(
-    style="background-image: url('/images/headers/header-contactus.jpg'); padding: 120px 0;" 
-    data-bottom-top="background-position:0px 300px;" 
-    data-top-bottom="background-position:0px -300px;"
+    style="background-image: url('/images/headers/header-userszone.jpg'); padding: 120px 0;" 
   )
     .container.clearfix
       h2= title
-      span We are here to answer all your questions about us or our services.
+      span= subtitle
 
-  section#content.custom-my-80
-    .container.clearfix
+  section#content.my-5
+    .container-fluid.cleanfix
       .row
-        .col-12.custom-mb-30
-          h3.section-title Get in touch with us
-          p If you have any questions about our programs or services, please fill out the form below.
-        .col-md-4
-          address
-            strong Headquarters:
-            br
-            | 1144 45 Street SW
-            br
-            | Calgary, AB Canada
-            br
-            | T2H 4E3
-
-          strong Phone: 
-          | (1) 345 22 33 22
-          br
-          strong Fax: 
-          | (1) 345 33 22 33
-          br
-          strong Email: 
-          a(href='mailto:info@yourdomain.com') info@yourdomain.com
-
-
-        .col-md-8
-          form(method="POST")
+        .col-md-3
+          include ../includes/users-menu
+        .col-md-9.px-5
+          h3.mb-5= sectiontitle
+          if successsave
+            .alert.alert-success
+              strong Thank you!
+              br
+              | Your contact has been saved successfully. We will contact you to answer your questions.
+          
+          form(method="POST" action='/contact-us/contact/' + contact.id + '/edit?_method=PUT')
             .form-row
               .col-sm-6.form-group
-                label(for="firstname" class="label-color font-weight-bold") Firstname
+                label(for="firstname" class="label-color font-weight-bold") Firstname (*)
                 input.form-control#firstname(
                   name="firstname"
                   type="text"
-                  aria-describedby="firstnameHelp"
-                  placeholder="Enter your firstname"
-                  maxlength="150"
+                  placeholder= "Enter your firstname"
+                  title= "Firstname is required. Enter your firstname"
+                  minlength= "2"
+                  maxlength= "150"
                   class=errors.firstname ? "is-invalid" : ""
                   value=contact.firstname
                   required
@@ -55,12 +40,13 @@ block content
                   #firstname.invalid-feedback= errors.firstname.message
 
               .col-sm-6.form-group
-                label(for="lastname" class="label-color font-weight-bold") Lastname
+                label(for="lastname" class="label-color font-weight-bold") Lastname (*)
                 input.form-control#firstname(
                   name="lastname"
                   type="text"
-                  aria-describedby="lastnameHelp"
                   placeholder="Enter your lastname"
+                  title= "Lastname is required. Enter your lastname"
+                  minlength= "2"
                   maxlength="150"
                   class=errors.lastname ? "is-invalid" : ""
                   value=contact.lastname
@@ -70,12 +56,13 @@ block content
                   #lastname.invalid-feedback= errors.lastname.message
 
               .col-sm-6.form-group
-                label(for="phone" class="label-color font-weight-bold") Phone
-                input.form-control#firstname(
+                label(for="phone" class="label-color font-weight-bold") Phone (*)
+                input.form-control#phone(
                   name="phone"
                   type="tel"
-                  aria-describedby="phoneHelp"
                   placeholder="Enter your phone number"
+                  title= "Phone is required. Enter your phone number"
+                  minlength= "7"
                   maxlength="15"
                   class=errors.phone ? "is-invalid" : ""
                   value=contact.phone
@@ -85,12 +72,13 @@ block content
                   #phone.invalid-feedback= errors.phone.message
 
               .col-sm-6.form-group
-                label(for="email" class="label-color font-weight-bold") Email
+                label(for="email" class="label-color font-weight-bold") Email (*)
                 input.form-control#firstname(
                   name="email"
                   type="email"
-                  aria-describedby="emailHelp"
-                  placeholder="Enter your email"   
+                  placeholder="Enter your email"
+                  title= "Email is required. Enter your email"
+                  mainlegth= "10"
                   maxlength="255"         
                   class=errors.email ? "is-invalid" : ""
                   value=contact.email
@@ -100,12 +88,13 @@ block content
                   #email.invalid-feedback= errors.email.message
 
               .col-sm-12.form-group
-                label(for="subject" class="label-color font-weight-bold") Subject
+                label(for="subject" class="label-color font-weight-bold") Subject (*)
                 input.form-control#subject(
                   name="subject"
                   type="text"
-                  aria-describedby="subjectHelp"
                   placeholder="Enter a subject"
+                  title= "Subject is required. Enter a subject"
+                  minlegth= "5"
                   maxlength="255"
                   class=errors.subject ? "is-invalid" : ""
                   value=contact.subject
@@ -115,17 +104,24 @@ block content
                   #subject.invalid-feedback= errors.subject.message
 
               .col-sm-12.form-group
-                label(for="comment" class="label-color font-weight-bold") Message or comment
+                label(for="comment" class="label-color font-weight-bold") Message or comment (*)
                 textarea.form-control#comment(
                   name="comment"
-                  aria-describedby="commentHelp"
                   placeholder="Enter your comment or message"
+                  title= "Message or comment is required. Enter your comment or message"
+                  rows= "10"
+                  cols= "30"
                   maxlength="2000"
                   class=errors.comment ? "is-invalid" : ""
-                  value=contact.comment
                   required
-                )
+                )=contact.comment
                 if errors.comment
-                  #comment.invalid-feedback= errors.comment.message          
+                  #comment.invalid-feedback= errors.comment.message                     
 
+              input(
+                name="status"
+                type="hidden"
+                value="Answered"
+                )
               button.btn.btn-primary(type="submit") Submit
+              a(href="/contact-us/table-contacts" class="btn btn-secondary ml-3") Cancel

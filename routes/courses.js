@@ -1,9 +1,28 @@
 var express = require('express');
+var coursesController = require('../controllers/courses');
 var router = express.Router();
 
-/* GET home page. */
-router.get('/', function(req, res, next) {
-    res.render('Courses', { title: 'Courses' });
-});
+router 
+  .route('/')
+  .get(coursesController.list)
+
+router
+  .route('/add-course')
+  .get(coursesController.addForm)
+  .post(coursesController.Create)
+
+  router 
+  .route('/table-courses')
+  .get(coursesController.table)
+
+  router
+  .route('/categories')
+  .get(coursesController.categories)
+  .post(coursesController.CreateCategory)
+  .get(coursesController.listCategories)
+
+router
+  .route('/:id')
+  .get(coursesController.fulltext)
 
 module.exports = router;

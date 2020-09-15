@@ -30,6 +30,10 @@ var contactSchema = new Schema ({
         type: String,
         required: [true, 'Comment or message is required.']
     },
+    status: {
+        type: String,
+        required: [true, 'Status is required.']
+    },
 },
 {
     timestamps: true

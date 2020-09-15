@@ -1,0 +1,58 @@
+extends ../layout
+
+block content
+  section#page-title(
+    style="background-image: url('/images/headers/header-userszone.jpg'); padding: 120px 0;" 
+    data-bottom-top="background-position:0px 300px;" 
+    data-top-bottom="background-position:0px -300px;"
+  )
+    .container.clearfix
+      h2= title
+      span We are here to answer all your questions about us or our services.
+
+  section#content.custom-my-80
+    .container-fluid.cleanfix
+      .row
+        .col-md-3
+          include ../includes/users-menu
+        .col-md-3.px-4
+          h3= subtitle
+          form(method="POST")
+            .form-row
+              .col-12.form-group
+                label(for="headline" class="font-weight-bold") Name (*)
+                input.form-control#headline(
+                  name="headline"
+                  type="text"
+                  aria-describeby="headlineHelp"
+                  placeholder="Enter the course title"
+                  maxlength="255"
+                  class=errors.headline ? "is-invalid" : ""
+                  required
+                  )
+                if errors.headline
+                  #headline.invalid-feedback= errors.firstname.message 
+
+              .col-12.form-group
+                label(for="abstract" class="font-weight-bold") Description (*)
+                textarea.form-control#abstract(
+                  name="abstract", 
+                  placeholder="Enter the post's abstract",
+                  cols="30", 
+                  rows="10")
+
+
+              button.btn.btn-primary(type="submit") Submit
+
+        .col-md-6.px-4
+          table.table.table-striped
+            thead.thead-dark
+                tr 
+                  th Category
+                  th Description
+            tbody
+              each category in categories
+                tr
+                  td=category.headline
+                  td=category.abstract
+                

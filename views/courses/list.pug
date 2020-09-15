@@ -1,0 +1,40 @@
+extends ../layout
+
+block content
+  section#page-title(
+    style="background-image: url('/images/headers/header-courses.jpg'); padding: 120px 0;" 
+    data-bottom-top="background-position:0px 300px;" 
+    data-top-bottom="background-position:0px -300px;"
+  )
+    .container.clearfix
+      h2= title
+      span Discover the latest news, events and useful information for you
+      
+  section#content.custom-my-80
+    .container.clearfix
+      .row  
+        each course in courses
+          .col-md-4.mb-5
+            .card.course-card.hover-effect.border-0
+              a(href='/courses/' + course.id)
+                img(
+                  class="card-img-top" 
+                  src="/images/news/examplenews-01.jpg" 
+                  alt="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+                )  
+              .card-body
+                h3.card-title.font-weight-bold.mb-2
+                  a(href='/courses/' + course.id)= course.headline  
+                p.mb-2.card-title-sub.text-uppercase.font-weight-normal.ls1= course.clasify
+                p.card-text.text-black-50.mb-1= course.abstract
+         
+              .card-footer.py-3.d-flex.justify-content-between.align-items-center.bg-white.text-muted
+                .badge.alert-primary= course.delivert
+                a(href="") Enroll
+
+        else
+          .col-md-12
+            p We don't have any courses at this time. Pease check back later.
+
+
+          

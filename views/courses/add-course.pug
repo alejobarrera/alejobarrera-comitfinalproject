@@ -1,0 +1,117 @@
+extends ../layout
+
+block content
+  section#page-title(
+    style="background-image: url('/images/headers/header-userszone.jpg'); padding: 120px 0;" 
+    data-bottom-top="background-position:0px 300px;" 
+    data-top-bottom="background-position:0px -300px;"
+  )
+    .container.clearfix
+      h2= title
+      span We are here to answer all your questions about us or our services.
+
+  section#content.custom-my-80
+    .container-fluid.cleanfix
+      .row
+        .col-md-3
+          include ../includes/users-menu
+        .col-md-9.px-4
+          h3= subtitle
+          p Fill the form with the information about news, events or announcements. Remember the fields with (*) asterisk are mandatories. 
+          form(method="POST")
+            .form-row
+              .col-12.form-group
+                label(for="headline" class="font-weight-bold") Course Title (*)
+                input.form-control#headline(
+                  name="headline"
+                  type="text"
+                  aria-describeby="headlineHelp"
+                  placeholder="Enter the course title"
+                  maxlength="255"
+                  class=errors.headline ? "is-invalid" : ""
+                  value=course.headline
+                  required
+                  )
+                if errors.headline
+                  #headline.invalid-feedback= errors.firstname.message 
+
+              .col-12.col-md-6.form-group
+                label(for="category" class="font-weight-bold") Category (*)
+                  select.form-control#delivery(name="category")
+                    option(value="Online") Online
+                    option(value="In Class") In Class
+                    option(value="Blended") Blended
+
+              .col-12.col-md-4.form-group
+                label(for="delivery" class="font-weight-bold") Delivery (*)
+                  select.form-control#delivery(name="delivery")
+                    option(value="Online") Online
+                    option(value="In Class") In Class
+                    option(value="Blended") Blended
+
+              .col-12.form-group
+                label(for="abstract" class="font-weight-bold") Course Description (*)
+                textarea.form-control#abstract(
+                  name="abstract", 
+                  placeholder="Enter the post's abstract",
+                  cols="30", 
+                  rows="10")
+
+              .col-12.form-group
+                label(for="image" class="font-weight-bold") Image (*)
+                input.form-control#image(
+                  type="file", 
+                  name="image")
+
+              .col-12.form-group
+                label(for="fulltext" class="font-weight-bold") Fulltext (*)
+                textarea.form-control#fulltext(
+                  name="fulltext", 
+                  placeholder="Enter the post's fulltext"
+                  cols="30", 
+                  rows="10")
+
+              .col-12.form-group
+                label(for="contactname" class="font-weight-bold") Contact Name
+                input.form-control#contactname(
+                  name="contactname"
+                  type="text"
+                  placeholder="Enter the post's author"
+                  aria-describeby="authorHelp"
+                  maxlength="255"
+                  class=errors.contactname ? "is-invalid" : ""
+                  value=course.contactname
+                  )
+                if errors.contactname
+                  #author.invalid-feedback= errors.contactname.message 
+
+              .col-12.form-group
+                label(for="contactemail" class="font-weight-bold") Contact e-mail
+                input.form-control#contactemail(
+                  name="contactemail"
+                  type="email"
+                  aria-describeby="contactemailHelp"
+                  placeholder="Enter the contact's e-mail"
+                  maxlength="255"
+                  class=errors.contactemail ? "is-invalid" : ""
+                  value=course.contactemail
+                )
+                if errors.contactemail
+                  #authoremail.invalid-feedback= errors.contact.message
+
+              .col-12.form-group
+                label(for="contactphone" class="font-weight-bold") Contact Phone
+                input.form-control#contactphone(
+                  name="contactphone"
+                  type="text"
+                  placeholder="Enter the post's author"
+                  aria-describeby="authorHelp"
+                  maxlength="255"
+                  class=errors.contactphone ? "is-invalid" : ""
+                  value=course.contactphone
+                  )
+                if errors.contactphone
+                  #author.invalid-feedback= errors.contactphone.message 
+
+              button.btn.btn-primary(type="submit") Submit
+                

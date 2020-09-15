@@ -1,0 +1,12 @@
+block content
+  .col-md-6.px-4
+    table.table.table-striped
+      thead.thead-dark
+        tr 
+          th Category
+          th Description
+        tbody
+        each category in categories
+          tr
+            td=category.headline
+            td=category.abstract
