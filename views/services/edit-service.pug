@@ -15,7 +15,7 @@ block content
           include ../includes/users-menu
         .col-md-9.px-5
           h3.mb-5= sectiontitle
-          form(method="POST")
+          form(method="POST" action='/services/service/' + service.id + '/edit?_method=PUT')
             .form-row
               .col-12.form-group
                 label(for="headline" class="font-weight-bold") Headline (*)
@@ -39,7 +39,7 @@ block content
                   placeholder="Enter the post's abstract",
                   cols="30", 
                   rows="10"
-                  )
+                  )=service.abstract
                 if errors.abstract
                   #abstract.invalid-feedback= errors.abstract.message 
 
@@ -47,7 +47,8 @@ block content
                 label(for="image" class="font-weight-bold") Image (*)
                 input.form-control#image(
                   type="file", 
-                  name="image"
+                  name="image",
+                  value=service.image
                   )
                 if errors.image
                   #image.invalid-feedback= errors.image.message 
@@ -59,9 +60,10 @@ block content
                   placeholder="Enter the post's fulltext"
                   cols="30", 
                   rows="10"
-                  )
+                  )=service.fulltext
                 if errors.fulltext
                   #fulltext.invalid-feedback= errors.fulltext.message 
 
             button.btn.btn-primary(type="submit") Submit
+            a(href="/contact-us/table-contacts" class="btn btn-secondary ml-3") Cancel
                     

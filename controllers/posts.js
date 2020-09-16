@@ -1,5 +1,6 @@
 var express = require('express');
 var Post = require('../models/post');
+var fs = require('fs');
 
 exports.list = function(req, res) {
     Post.find(function (err, posts) {

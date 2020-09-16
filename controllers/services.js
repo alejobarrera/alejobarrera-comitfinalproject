@@ -1,56 +1,36 @@
 var express = require('express');
 var Service = require('../models/service');
-
-exports.list = function(req, res) {
+//Show a list of items saved on the database on the collection service
+exports.listItems = function(req, res) {
     Service.find(function (err, services) {
         if (err) console.log(err)
         
         console.log(services)
-        res.render('services/list', { title: 'Services', services: services });
+        res.render('services/list-services', { title: 'Services', services: services });
+    });
+};
+//Show a form to add services on the database on the collection service
+exports.AddItem = function(req, res) {
+    res.render('services/add-service', {             
+        title: 'User zone', 
+        subtitle:'Admin user here',
+        sectiontitle: 'Add item - Services', 
+        service: {}, 
+        errors: [] 
     });
 };
 
-exports.addForm = function(req, res) {
-    res.render('services/add-service', { title: 'New service', service: {}, errors: [] });
-};
-
-exports.table = function(req, res) {
-    Service.find(function (err, services) {
-        if (err) console.log(err)
-        
-        console.log(services)
-        res.render('services/table-services', { title: 'All services', services: services });
-    });
-};
-
-exports.fulltext = function(req, res) {
-    var id = req.params.id;
-
-    console.log(id);
-    Service.findById(id, function (err, service) {
-        if (err) console.log(err)
-        
-        console.log(service)
-        res.render('services/fulltext', { title: 'Fulltext', service: service });
-    });
-};
-
-exports.Create = function(req, res) {
+exports.CreateItem = function(req, res) {
     var headline = req.body.headline;
     var abstract = req.body.abstract;
     var image = req.body.image;
     var fulltext = req.body.fulltext;
-    var author = req.body.author;
 
-    var newService = new Services({
+    var newService = new Service({
         headline: headline,
         abstract: abstract,
         image: image,
-        fulltext: fulltext,
-        author: author,
-        authoremail: authoremail,
-        source: source,
-        sourceurl: sourceurl
+        fulltext: fulltext      
     });
 
     newService.save(function(err) {
@@ -64,3 +44,74 @@ exports.Create = function(req, res) {
 
     });
 };
+//Show a table with the items saved on the database on the collection service
+exports.AdminItems = function(req, res) {
+    Service.find(function (err, services) {
+        if (err) console.log(err)
+        
+        console.log(services)
+        res.render('services/table-services', { 
+            title: 'User zone', 
+            subtitle:'Admin user here',
+            sectiontitle: 'Admin items - Services',
+            services: services 
+        });
+    });
+};
+//Show fulltext and option to delete 
+exports.ShowItem = function(req, res) {
+    var id = req.params.id;
+
+    console.log(id);
+    Service.findById(id, function (err, service) {
+        if (err) console.log(err)
+        
+        console.log(service)
+        res.render('services/show-service', { title: 'Fulltext', service: service });
+    });
+};
+//Delete an item from the database on the collection contact
+exports.DeleteItem = function(req, res) {
+    var id = req.params.id;
+
+    console.log(id);
+    Service.findById(id, function (err, service) {
+        if (err) console.log(err)
+        console.log(service)
+
+        service.remove(function (err){
+         if (err) console.log(err)
+         res.redirect('/services/table-services')
+        });        
+    });
+};
+//Show a form to edit services and update the information on the database on the collection service
+exports.EditItem = function(req, res) {
+    var id = req.params.id;
+
+    console.log(id);
+    Service.findById(id, function (err, service) {
+        if (err) console.log(err)
+        console.log(service)
+
+        res.render('services/edit-service', { 
+            title: 'User zone', 
+            subtitle:'Admin user here',
+            sectiontitle: 'Edit item - Service',
+            service: service,
+            errors: [] 
+        });
+    });
+};
+
+exports.UpdateItem = function(req, res) {
+    var id = req.params.id;
+    var update = req.body;
+
+    Service.findByIdAndUpdate(id, update, function (err, service) {
+        if (err) console.log(err)
+        console.log(service)
+        res.redirect('/services/table-services')
+    });
+};
+

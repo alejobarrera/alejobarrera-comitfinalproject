@@ -3,8 +3,6 @@ extends ../layout
 block content
   section#page-title(
     style="background-image: url('/images/headers/header-services.jpg'); padding: 120px 0;" 
-    data-bottom-top="background-position:0px 300px;" 
-    data-top-bottom="background-position:0px -300px;"
     )
     .container.clearfix
       h2= title
@@ -24,8 +22,8 @@ block content
                 )
               .card-body
                 h3.card-title
-                  a(href='/services/' + service.id)= post.headline
-                p.card-text= post.abstract
+                  a(href='/services/' + service.id)= service.headline
+                p.card-text= service.abstract
         else
           .col-md-12
             p We don't have any services at this time. Pease check back later.

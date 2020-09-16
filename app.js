@@ -4,6 +4,10 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var sassMiddleware = require('node-sass-middleware');
+//Udload files
+//var formidableMiddleware = require('express-formidable');
+// Send put and delete method
+var methodOverride = require('method-override');
 
 var mongoose = require('mongoose')
 mongoose.connect('mongodb://localhost/finalproject', {
@@ -26,7 +30,6 @@ var PostRouter = require('./routes/posts');
 var FAQsRouter = require('./routes/faqs');
 var ContactRouter = require('./routes/contact-us');
 
-var methodOverride = require('method-override');
 
 var app = express();
 
@@ -34,10 +37,10 @@ var app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 
-// override with the X-HTTP-Method-Override header in the request
 
 app.use(methodOverride('_method'));
 
+//app.use(formidableMiddleware({ keepExtensions: true }));
 
 app.use(logger('dev'));
 app.use(express.json());
