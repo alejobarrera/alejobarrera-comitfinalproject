@@ -1,6 +1,8 @@
+//Database: finalproject
+//Collection: services
 var express = require('express');
 var Service = require('../models/service');
-//Show a list of items saved on the database on the collection service
+//Show a list of items saved on the database
 exports.listItems = function(req, res) {
     Service.find(function (err, services) {
         if (err) console.log(err)
@@ -9,7 +11,7 @@ exports.listItems = function(req, res) {
         res.render('services/list-services', { title: 'Services', services: services });
     });
 };
-//Show a form to add services on the database on the collection service
+//Show a form to add services and save them on the database
 exports.AddItem = function(req, res) {
     res.render('services/add-service', {             
         title: 'User zone', 
@@ -19,13 +21,12 @@ exports.AddItem = function(req, res) {
         errors: [] 
     });
 };
-
+//Save the new service on the database
 exports.CreateItem = function(req, res) {
     var headline = req.body.headline;
     var abstract = req.body.abstract;
     var image = req.body.image;
     var fulltext = req.body.fulltext;
-
     var newService = new Service({
         headline: headline,
         abstract: abstract,
@@ -44,7 +45,7 @@ exports.CreateItem = function(req, res) {
 
     });
 };
-//Show a table with the items saved on the database on the collection service
+//Show a table with the items saved on the database for admin purposes
 exports.AdminItems = function(req, res) {
     Service.find(function (err, services) {
         if (err) console.log(err)
@@ -58,7 +59,7 @@ exports.AdminItems = function(req, res) {
         });
     });
 };
-//Show fulltext and option to delete 
+//Show full text for any user and option to delete for admin purposes
 exports.ShowItem = function(req, res) {
     var id = req.params.id;
 
@@ -70,7 +71,7 @@ exports.ShowItem = function(req, res) {
         res.render('services/show-service', { title: 'Fulltext', service: service });
     });
 };
-//Delete an item from the database on the collection contact
+//Delete an item from the database
 exports.DeleteItem = function(req, res) {
     var id = req.params.id;
 
@@ -85,7 +86,7 @@ exports.DeleteItem = function(req, res) {
         });        
     });
 };
-//Show a form to edit services and update the information on the database on the collection service
+//Show a form to edit services and update the information on the database
 exports.EditItem = function(req, res) {
     var id = req.params.id;
 
@@ -103,7 +104,7 @@ exports.EditItem = function(req, res) {
         });
     });
 };
-
+//Update the information on the database
 exports.UpdateItem = function(req, res) {
     var id = req.params.id;
     var update = req.body;
@@ -114,4 +115,3 @@ exports.UpdateItem = function(req, res) {
         res.redirect('/services/table-services')
     });
 };
-
