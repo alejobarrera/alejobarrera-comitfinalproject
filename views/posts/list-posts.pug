@@ -16,7 +16,7 @@ block content
         each post in posts
           .col-md-4.mb-4.d-flex
             .card
-              a(href='/posts/' + post.id)
+              a(href='/posts/post/' + post.id)
                 img(
                   class="card-img-top" 
                   src="/images/news/examplenews-01.jpg" 
@@ -24,7 +24,7 @@ block content
                 )
               .card-body
                 h3.card-title
-                  a(href='/posts/' + post.id)= post.headline
+                  a(href='/posts/post/' + post.id)= post.headline
                 p.card-text= post.abstract
         else
           .col-md-12
