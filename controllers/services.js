@@ -86,7 +86,7 @@ exports.DeleteItem = function(req, res) {
         });        
     });
 };
-//Show a form to edit services and update the information on the database
+//Show a form to edit the information and update it on the database for admin purposes
 exports.EditItem = function(req, res) {
     var id = req.params.id;
 

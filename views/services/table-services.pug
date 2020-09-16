@@ -22,7 +22,7 @@ block content
               thead.thead-custom-bg
                   tr 
                     th Actions
-                    th Ítem
+                    th Item
                     th Date
               tbody
                 each service in services
@@ -44,4 +44,4 @@ block content
                     td=service.createdAt
                 else
                   tr
-                    td.text-danger(colspan="5") Services not find.
+                    td.text-danger(colspan="3") Services not find.

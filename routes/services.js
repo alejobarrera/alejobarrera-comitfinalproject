@@ -13,14 +13,15 @@ router
   .get(servicesController.AddItem)
   .post(servicesController.CreateItem)
 //Show a table with the items saved on the database for admin purposes
-  router 
+router 
   .route('/table-services')
   .get(servicesController.AdminItems)
 //Show full text for any user and option to delete for admin purposes
-  router
+router
   .route('/service/:id')
   .get(servicesController.ShowItem)
   .delete(servicesController.DeleteItem)
+//Show a form to edit the information and update it on the database for admin purposes
 router
   .route('/service/:id/edit')
   .get(servicesController.EditItem)

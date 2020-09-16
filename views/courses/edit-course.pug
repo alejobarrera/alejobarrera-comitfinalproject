@@ -12,9 +12,8 @@ block content
         .col-md-3
           include ../includes/users-menu
         .col-md-9.px-5
-          h3.mb-5= subtitle
-          p Fill the form with the information about news, events or announcements. Remember the fields with (*) asterisk are mandatories. 
-          form(method="POST")
+          h3= subtitle
+          form(method="POST" action='/courses/course/' + course.id + '/edit?_method=PUT')
             .form-row
               .col-12.form-group
                 label(for="headline" class="font-weight-bold") Course Title (*)

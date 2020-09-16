@@ -11,20 +11,37 @@ block content
       span Discover the latest news, events and useful information for you
       
   section#content.custom-my-80
-    .container.clearfix
+    .container-fluid.clearfix
       .row
-        .col-md-4
+        .col-md-3
           include ../includes/users-menu
-        .col-md-8
-          h3=title
-          p Click on the title to edit the post
-          table.table.table-striped
-            thead.thead-dark
-                tr 
-                  th Ítem
-                  th Date
-            tbody
-              each course in courses
-                tr
-                  td=course.headline
-                  td=course.createdAt
+        .col-md-9.px-5
+          h3.mb-5=title
+          .table-responsive
+            table.table.table-striped
+              thead.thead-dark
+                  tr 
+                    th Action
+                    th Item
+                    th Date
+              tbody
+                each course in courses
+                  tr
+                    td
+                      a(href='/courses/course/' + course.id + '/edit', title="Edit item") 
+                        i.fas.fa-edit
+                        span.sr-only Edit
+                      form(
+                        method="POST", 
+                        action='/courses/course/' + course.id + '?_method=DELETE',
+                        class="form-inline"
+                        )
+                        a(href="javascript:void(0);", title="Delete item", onclick="if(confirm('are you sure you want to delete this course?')){this.parentNode.submit();}") 
+                          i.fas.fa-trash
+                          span.sr-only Delete
+                    td
+                      a(href='/courses/course/' + course.id + '/edit', title="Edit item")=course.headline
+                    td=course.createdAt
+                else
+                  tr
+                    td.text-danger(colspan="3") Courses not find.

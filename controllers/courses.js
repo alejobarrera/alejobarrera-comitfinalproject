@@ -1,21 +1,54 @@
+//Database: finalproject
+//Collection: courses and categories
 var express = require('express');
 var Course = require('../models/course');
 var Category = require('../models/category');
-
-exports.list = function(req, res) {
+//Show a list of items saved on the database
+exports.listItems = function(req, res) {
     Course.find(function (err, courses) {
         if (err) console.log(err)
         
         console.log(courses)
-        res.render('courses/list', { title: 'Courses', courses: courses });
+        res.render('courses/list-courses', { title: 'Courses', courses: courses });
     });
 };
-
-exports.addForm = function(req, res) {
+//Show a form to add courses and save them on the database
+exports.AddItem = function(req, res) {
     res.render('courses/add-course', { title: 'Users Zone', subtitle: 'Add New Course', course: {}, errors: [] });
 };
+//Save the new course on the database
+exports.CreateItem = function(req, res) {
+    var headline = req.body.headline;
+    var delivery = req.body.delivery;
+    var abstract = req.body.abstract;
+    var image = req.body.image;
+    var fulltext = req.body.fulltext;
+    var contactname = req.body.contactname;
+    var contactemail = req.body.contactemail;
+    var contactphone = req.body.contactphone;
+    var newCourse = new Course({
+        headline: headline,
+        delivery: delivery,
+        abstract: abstract,
+        image: image,
+        fulltext: fulltext,
+        contactname: contactname,
+        contactemail: contactemail,
+        contactphone: contactphone,
+    });
 
-exports.table = function(req, res) {
+    newCourse.save(function(err) {
+      if (err) {
+          res.render('courses/add-course', { course: newCourse, errors: err.errors });
+          console.log(err);
+      } else {
+          res.redirect('table-courses');
+          console.log('Course saved successfully!');
+      }
+    });
+};
+//Show a table with the items saved on the database for admin purposes
+exports.AdminItems = function(req, res) {
     Course.find(function (err, courses) {
         if (err) console.log(err)
         
@@ -23,10 +56,8 @@ exports.table = function(req, res) {
         res.render('courses/table-courses', { title: 'All courses', courses: courses });
     });
 };
-
-
-
-exports.fulltext = function(req, res) {
+//Show full text for any user and option to delete for admin purposes
+exports.ShowItem = function(req, res) {
     var id = req.params.id;
 
     console.log(id);
@@ -34,7 +65,51 @@ exports.fulltext = function(req, res) {
         if (err) console.log(err)
         
         console.log(course)
-        res.render('courses/fulltext', { title: 'Fulltext', course: course });
+        res.render('courses/show-course', { title: 'Fulltext', course: course });
+    });
+};
+//Delete an item from the database
+exports.DeleteItem = function(req, res) {
+    var id = req.params.id;
+
+    console.log(id);
+    Course.findById(id, function (err, course) {
+        if (err) console.log(err)
+        console.log(course)
+
+        course.remove(function (err){
+         if (err) console.log(err)
+         res.redirect('/courses/table-courses')
+        });        
+    });
+};
+//Show a form to edit the information and update it on the database for admin purposes
+exports.EditItem = function(req, res) {
+    var id = req.params.id;
+
+    console.log(id);
+    Course.findById(id, function (err, course) {
+        if (err) console.log(err)
+        console.log(course)
+
+        res.render('courses/edit-course', { 
+            title: 'User zone', 
+            subtitle:'Admin user here',
+            sectiontitle: 'Edit item - Courses',
+            course: course,
+            errors: [] 
+        });
+    });
+};
+//Update the information on the database
+exports.UpdateItem = function(req, res) {
+    var id = req.params.id;
+    var update = req.body;
+
+    Course.findByIdAndUpdate(id, update, function (err, course) {
+        if (err) console.log(err)
+        console.log(course)
+        res.redirect('/courses/table-courses')
     });
 };
 
@@ -70,35 +145,3 @@ exports.CreateCategory = function(req, res){
 };
 
 
-exports.Create = function(req, res) {
-    var headline = req.body.headline;
-    var delivery = req.body.delivery;
-    var abstract = req.body.abstract;
-    var image = req.body.image;
-    var fulltext = req.body.fulltext;
-    var contactname = req.body.contactname;
-    var contactemail = req.body.contactemail;
-    var contactphone = req.body.contactphone;
-
-    var newCourse = new course({
-        headline: headline,
-        delivery: delivery,
-        abstract: abstract,
-        image: image,
-        fulltext: fulltext,
-        contactname: contactname,
-        contactemail: contactemail,
-        contactphone: contactphone,
-    });
-
-    newCourse.save(function(err) {
-      if (err) {
-          res.render('courses/add-course', { course: newCourse, errors: err.errors });
-          console.log(err);
-      } else {
-          res.redirect('table-course');
-          console.log('Course saved successfully!');
-      }
-
-    });
-};
