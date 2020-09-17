@@ -1,30 +1,43 @@
 extends ../layout
 
 block content
-  section#page-title(
-    style="background-image: url('/images/headers/header-faqs.jpg'); padding: 120px 0;" 
-    data-bottom-top="background-position:0px 300px;" 
-    data-top-bottom="background-position:0px -300px;"
-  )
+  section#page-title(style="background-image: url('/images/headers/header-faqs.jpg'); padding: 120px 0;")
     .container.clearfix
       h2= title
       span All your Questions answered in one place
       
   section#content.custom-my-80
-    .container.clearfix
+    .container-fluid.clearfix
       .row
-        .col-md-4
+        .col-md-3
           include ../includes/users-menu
-        .col-md-8
-          h2 All faqs
-          p Click on the title to edit the post
-          table.table.table-striped
-            thead.thead-dark
-                tr 
-                  th Ítem
-                  th Date
-            tbody
-              each faq in faqs
-                tr
-                  td=faq.question
-                  td=faq.createdAt
+        .col-md-9.px-5
+          h3.mb-5 All faqs
+          .table-responsive
+            table.table.table-striped
+              thead.thead-dark
+                  tr 
+                    th Actions
+                    th Item
+                    th Date
+              tbody
+                each faq in faqs
+                  tr
+                    td
+                      a(href='/faqs/faq/' + faq.id + '/edit', title="Edit item") 
+                        i.fas.fa-edit
+                        span.sr-only Edit
+                      form(
+                        method="POST", 
+                        action='/faqs/faq/' + faq.id + '?_method=DELETE',
+                        class="form-inline"
+                        )
+                        a(href="javascript:void(0);", title="Delete item", onclick="if(confirm('are you sure you want to delete this faq?')){this.parentNode.submit();}") 
+                          i.fas.fa-trash
+                          span.sr-only Delete
+                    td 
+                      a(href='/faqs/faq/' + faq.id + '/edit', title="Edit item")=faq.question
+                    td=faq.createdAt
+                else
+                    tr
+                      td.text-danger(colspan="3") Faqs not find.

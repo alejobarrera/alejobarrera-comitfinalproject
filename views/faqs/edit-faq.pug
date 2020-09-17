@@ -1,7 +1,11 @@
 extends ../layout
 
 block content
-  section#page-title(style="background-image: url('/images/headers/header-userszone.jpg'); padding: 120px 0;")
+  section#page-title(
+    style="background-image: url('/images/headers/header-userszone.jpg'); padding: 120px 0;" 
+    data-bottom-top="background-position:0px 300px;" 
+    data-top-bottom="background-position:0px -300px;"
+  )
     .container.clearfix
       h2= title
       span We are here to answer all your questions about us or our services.
@@ -11,9 +15,9 @@ block content
       .row
         .col-md-3
           include ../includes/users-menu
-        .col-md-9.px-5
-          h2 Add new faq
-          form(method="POST")
+        .col-md-9
+          h3 Add new faq
+          form(method="POST" action='/faqs/faq/' + faq.id + '/edit?_method=PUT')
             .form-row
               .col-12.form-group
                 label(for="question" class="font-weight-bold") Question (*)
@@ -38,7 +42,7 @@ block content
                   cols="30", 
                   rows="10",
                   required
-                  )
+                  )=faq.answer
                 if errors.answer
                   #answer.invalid-feedack= errors.answer.message
 
