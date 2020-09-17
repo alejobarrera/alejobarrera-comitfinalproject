@@ -1,4 +1,12 @@
 ul.list-group
+    li.list-group-item
+        a(data-toggle="collapse", href="#aboutus") About us
+        #aboutus.panel-collapse.collapse
+            ul.list-group
+                li.list-group-item
+                    a(href="/about-us/table-aboutus") About us
+                li.list-group-item
+                    a(href="/about-us/add-aboutus") Add About us
 
     li.list-group-item
         a(data-toggle="collapse", href="#services") Services

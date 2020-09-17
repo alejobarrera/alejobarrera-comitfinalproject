@@ -1,0 +1,78 @@
+extends ../layout
+
+block content
+  section#page-title(style="background-image: url('/images/headers/header-userszone.jpg'); padding: 120px 0;")
+    .container.clearfix
+      h2= title
+      span We are here to answer all your questions about us or our services.
+
+  section#content.my-5
+    .container-fluid.cleanfix
+      .row
+        .col-md-3
+          include ../includes/users-menu
+        .col-md-9.px-5
+          h2 Add new faq
+          form(method="POST" action='/about-us/' + aboutus.id + '/edit?_method=PUT')
+            .form-row
+              .col-12.form-group
+                label(for="whatwedo" class="font-weight-bold") What we do (*)
+                textarea.form-control#whatwedo(
+                  name="whatwedo", 
+                  placeholder="Enter an answer"
+                  cols="30", 
+                  rows="10",
+                  required
+                  )=aboutus.whatwedo
+                if errors.whatwedo
+                  #whatwedo.invalid-feedack= errors.whatwedo.message
+              .col-12.form-group
+                label(for="ourmission" class="font-weight-bold") Our Mission (*)
+                textarea.form-control#ourmission(
+                  name="ourmission", 
+                  placeholder="Enter an answer"
+                  cols="30", 
+                  rows="10",
+                  required
+                  )=aboutus.ourmission
+                if errors.ourmission
+                  #ourmission.invalid-feedack= errors.ourmission.message
+                .col-12.form-group
+                label(for="ourvission" class="font-weight-bold") Our Vission (*)
+                textarea.form-control#ourvission(
+                  name="ourvission", 
+                  placeholder="Enter an answer"
+                  cols="30", 
+                  rows="10",
+                  required
+                  )=aboutus.ourvission
+                if errors.ourvission
+                  #ourvission.invalid-feedack= errors.ourvission.message
+
+              .col-12.form-group
+                label(for="headline" class="font-weight-bold") Headline (*)
+                input.form-control#headline(
+                  name="headline"
+                  type="text"
+                  placeholder="Enter a question"
+                  maxlength="255"
+                  class=errors.headline ? "is-invalid" : ""
+                  required
+                  value=aboutus.headline
+                  )
+                if errors.headline
+                  #headline.invalid-feedback= errors.headline.message
+  
+              .col-12.form-group
+                label(for="abstract" class="font-weight-bold") Description (*)
+                textarea.form-control#abstract(
+                  name="abstract", 
+                  placeholder="Enter an answer"
+                  cols="30", 
+                  rows="10",
+                  required
+                  )=aboutus.abstract
+                if errors.abstract
+                  #abstract.invalid-feedack= errors.abstract.message
+
+            button.btn.btn-primary(type="submit") Submit

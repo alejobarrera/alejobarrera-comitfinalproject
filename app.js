@@ -22,8 +22,8 @@ db.once('open', function() {
 });
 
 var indexRouter = require('./routes/index');
-var AboutusRouter = require('./routes/about-us');
 
+var AboutusRouter = require('./routes/about-us');
 var ServicesRouter = require('./routes/services');
 var CoursesRouter = require('./routes/courses');
 var PostRouter = require('./routes/posts');
@@ -55,8 +55,8 @@ app.use(sassMiddleware({
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
-app.use('/about-us', AboutusRouter);
 
+app.use('/about-us', AboutusRouter);
 app.use('/services', ServicesRouter);
 app.use('/courses', CoursesRouter);
 app.use('/posts', PostRouter);

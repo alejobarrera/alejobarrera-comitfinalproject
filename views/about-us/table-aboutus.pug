@@ -1,0 +1,43 @@
+extends ../layout
+
+block content
+  section#page-title(style="background-image: url('/images/headers/header-faqs.jpg'); padding: 120px 0;")
+    .container.clearfix
+      h2= title
+      span All your Questions answered in one place
+      
+  section#content.custom-my-80
+    .container-fluid.clearfix
+      .row
+        .col-md-3
+          include ../includes/users-menu
+        .col-md-9.px-5
+          h3.mb-5 All faqs
+          .table-responsive
+            table.table.table-striped
+              thead.thead-dark
+                  tr 
+                    th Actions
+                    th Item
+                    th Date
+              tbody
+                each item in aboutus
+                  tr
+                    td
+                      a(href='/about-us/' + item.id + '/edit', title="Edit item") 
+                        i.fas.fa-edit
+                        span.sr-only Edit
+                      form(
+                        method="POST", 
+                        action='/about-us/' + item.id + '?_method=DELETE',
+                        class="form-inline"
+                        )
+                        a(href="javascript:void(0);", title="Delete item", onclick="if(confirm('are you sure you want to delete About us?')){this.parentNode.submit();}") 
+                          i.fas.fa-trash
+                          span.sr-only Delete
+                    td 
+                      a(href='/about-us/' + item.id + '/edit', title="Edit item") About us
+                    td=item.createdAt
+                else
+                    tr
+                      td.text-danger(colspan="3") About us not find.
