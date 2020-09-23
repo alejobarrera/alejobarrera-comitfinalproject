@@ -1,23 +1,21 @@
 extends ../layout
 
 block content
-  section#page-title(
-    style="background-image: url('/images/headers/header-services.jpg'); padding: 120px 0;" 
-    )
+  section#page-title(style="background-image: url('/images/headers/header-services.jpg'); padding: 120px 0;" )
     .container.clearfix
       h2= title
-      span Discover the latest news, events and useful information for you
+      span= subtitle
 
   section#content.custom-my-80
     .container.clearfix
       .row
         each service in services
-          .col-md-4.mb-4.d-flex
+          .col-md-6.mb-4.d-flex
             .card
               a(href='/services/service/' + service.id)
                 img(
                   class="card-img-top" 
-                  src="/images/news/examplenews-01.jpg" 
+                  src="/images/services/exampleService.jpg" 
                   alt="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
                 )
               .card-body

@@ -4,7 +4,7 @@ block content
   section#page-title(style="background-image: url('/images/headers/header-faqs.jpg'); padding: 120px 0;")
     .container.clearfix
       h2= title
-      span All your Questions answered in one place
+      span= subtitle
       
   section#content.custom-my-80
     .container-fluid.clearfix
@@ -12,7 +12,7 @@ block content
         .col-md-3
           include ../includes/users-menu
         .col-md-9.px-5
-          h3.mb-5 All faqs
+          h3.mb-5.admintitle= sectiontitle
           .table-responsive
             table.table.table-striped
               thead.thead-dark

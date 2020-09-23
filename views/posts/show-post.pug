@@ -1,14 +1,10 @@
 extends ../layout
 
 block content
-  section#page-title(
-    style="background-image: url('/images/headers/header-news.jpg'); padding: 120px 0;" 
-    data-bottom-top="background-position:0px 300px;" 
-    data-top-bottom="background-position:0px -300px;"
-  )
+  section#page-title(style="background-image: url('/images/headers/header-news.jpg'); padding: 120px 0;" )
     .container.clearfix
       h2= title
-      span Discover the latest news, events and useful information for you
+      span= subtitle
       
   section#content.my-5
     .container.clearfix
@@ -20,4 +16,5 @@ block content
         
         .col-md-4
           h3 Lastest post
+
 

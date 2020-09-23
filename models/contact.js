@@ -34,6 +34,9 @@ var contactSchema = new Schema ({
         type: String,
         required: [true, 'Status is required.']
     },
+    answer: {
+        type: String
+    },
 },
 {
     timestamps: true

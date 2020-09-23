@@ -1,12 +1,10 @@
 extends ../layout
 
 block content
-  section#page-title(
-    style="background-image: url('/images/headers/header-userszone.jpg'); padding: 120px 0;" 
-    )
+  section#page-title(style="background-image: url('/images/headers/header-userszone.jpg'); padding: 120px 0;" )
     .container.clearfix
       h2= title
-      span We are here to answer all your questions about us or our services.
+      span= subtitle
 
   section#content.custom-my-80
     .container-fluid.cleanfix
@@ -14,7 +12,7 @@ block content
         .col-md-3
           include ../includes/users-menu
         .col-md-9.px-5
-          h3.mb-5= sectiontitle
+          h3.mb-5.admintitle= sectiontitle
           form(method="POST" action='/services/service/' + service.id + '/edit?_method=PUT')
             .form-row
               .col-12.form-group
@@ -65,5 +63,5 @@ block content
                   #fulltext.invalid-feedback= errors.fulltext.message 
 
             button.btn.btn-primary(type="submit") Submit
-            a(href="/contact-us/table-contacts" class="btn btn-secondary ml-3") Cancel
+            a(href="/services/table-services" class="btn btn-secondary ml-3") Cancel
                     

@@ -3,16 +3,16 @@ extends ../layout
 block content
   section#page-title(style="background-image: url('/images/headers/header-userszone.jpg'); padding: 120px 0;" )
     .container.clearfix
-      h1= title
-      span We are here to answer all your questions about us or our services.
+      h2= title
+      span= subtitle
 
   section#content.custom-my-80
-    .container.cleanfix
+    .container-fluid.cleanfix
       .row
-        .col-md-4
+        .col-md-3
           include ../includes/users-menu
-        .col-md-8
-          h2 Add new post
+        .col-md-9.px-5
+          h3.mb-5.admintitle= sectiontitle
           form(method="POST" action='/posts/post/' + post.id + '/edit?_method=PUT')
             .form-row
               .col-12.form-group
@@ -109,4 +109,5 @@ block content
                   #sourceurl.invalid-feedback= errors.sourceurl.message 
 
               button.btn.btn-primary(type="submit") Submit
+              a(href="/posts/table-posts" class="btn btn-secondary ml-3") Cancel
                 

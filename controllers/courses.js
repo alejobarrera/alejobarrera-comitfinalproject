@@ -9,12 +9,21 @@ exports.listItems = function(req, res) {
         if (err) console.log(err)
         
         console.log(courses)
-        res.render('courses/list-courses', { title: 'Courses', courses: courses });
+        res.render('courses/list-courses', { 
+            title: 'Courses', 
+            subtitle: 'Discover our courses and choose how you want them to deliver',
+            courses: courses 
+        });
     });
 };
 //Show a form to add courses and save them on the database
 exports.AddItem = function(req, res) {
-    res.render('courses/add-course', { title: 'Users Zone', subtitle: 'Add New Course', course: {}, errors: [] });
+    res.render('courses/add-course', { 
+        title: 'Users Zone', 
+        subtitle:'Manage the content of your website and keep it update.',
+        sectiontitle: 'Add item - Courses', 
+        course: {}, errors: [] 
+    });
 };
 //Save the new course on the database
 exports.CreateItem = function(req, res) {
@@ -53,7 +62,12 @@ exports.AdminItems = function(req, res) {
         if (err) console.log(err)
         
         console.log(courses)
-        res.render('courses/table-courses', { title: 'All courses', courses: courses });
+        res.render('courses/table-courses', { 
+            title: 'User zone', 
+            subtitle:'Manage the content of your website and keep it update.',
+            sectiontitle: 'Admin items - Courses',
+            courses: courses 
+        });
     });
 };
 //Show full text for any user and option to delete for admin purposes
@@ -65,7 +79,11 @@ exports.ShowItem = function(req, res) {
         if (err) console.log(err)
         
         console.log(course)
-        res.render('courses/show-course', { title: 'Fulltext', course: course });
+        res.render('courses/show-course', { 
+            title: 'Services',
+            subtitle: 'Discover our courses and choose how you want them to deliver',
+            course: course
+        });
     });
 };
 //Delete an item from the database
@@ -94,7 +112,7 @@ exports.EditItem = function(req, res) {
 
         res.render('courses/edit-course', { 
             title: 'User zone', 
-            subtitle:'Admin user here',
+            subtitle:'Manage the content of your website and keep it update.',
             sectiontitle: 'Edit item - Courses',
             course: course,
             errors: [] 

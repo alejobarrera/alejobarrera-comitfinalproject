@@ -9,12 +9,22 @@ exports.listItems = function(req, res) {
         if (err) console.log(err)
         
         console.log(posts)
-        res.render('posts/list-posts', { title: 'News', posts: posts });
+        res.render('posts/list-posts', { 
+            title: 'News',
+            subtitle: 'Discover the latest news, events and useful information for you',
+            posts: posts 
+        });
     });
 };
 //Show a form to add posts and save them on the database
 exports.AddItem = function(req, res) {
-    res.render('posts/add-post', { title: 'New post', post: {}, errors: [] });
+    res.render('posts/add-post', { 
+        title: 'Users Zone', 
+        subtitle:'Manage the content of your website and keep it update.',
+        sectiontitle: 'Add item - Post',  
+        post: {}, 
+        errors: [] 
+    });
 };
 //Save the new post on the database
 exports.CreateItem = function(req, res) {
@@ -54,19 +64,28 @@ exports.AdminItems = function(req, res) {
         if (err) console.log(err)
         
         console.log(posts)
-        res.render('posts/table-posts', { title: 'All posts', posts: posts });
+        res.render('posts/table-posts', {
+            title: 'Users Zone', 
+            subtitle:'Manage the content of your website and keep it update.',
+            sectiontitle: 'Admin items - Posts', 
+            posts: posts 
+        });
     });
 };
 //Show full text for any user and option to delete for admin purposes
 exports.ShowItem = function(req, res) {
     var id = req.params.id;
-
     console.log(id);
-    Post.findById(id, function (err, post) {
+
+    Post.find(function (err, post) {
         if (err) console.log(err)
         
         console.log(post)
-        res.render('posts/show-post', { title: 'Fulltext', post: post });
+        res.render('posts/show-post', {         
+            title: 'News', 
+            subtitle:'Discover the latest news, events and useful information for you.',
+            post: post 
+        });
     });
 };
 //Delete an item from the database
@@ -95,7 +114,7 @@ exports.EditItem = function(req, res) {
 
         res.render('posts/edit-post', { 
             title: 'User zone', 
-            subtitle:'Admin user here',
+            subtitle:'Manage the content of your website and keep it update.',
             sectiontitle: 'Edit item - Posts',
             post: post,
             errors: [] 

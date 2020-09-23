@@ -4,7 +4,7 @@ block content
   section#page-title(style="background-image: url('/images/headers/header-userszone.jpg'); padding: 120px 0;")
     .container.clearfix
       h2= title
-      span We are here to answer all your questions about us or our services.
+      span= subitle
 
   section#content.my-5
     .container-fluid.cleanfix
@@ -12,7 +12,7 @@ block content
         .col-md-3
           include ../includes/users-menu
         .col-md-9.px-5
-          h2 Add new faq
+          h3.mb-5.admintitle= sectiontitle
           form(method="POST")
             .form-row
               .col-12.form-group

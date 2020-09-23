@@ -1,9 +1,7 @@
 extends ../layout
 
 block content
-  section#page-title(
-    style="background-image: url('/images/headers/header-userszone.jpg'); padding: 120px 0;" 
-  )
+  section#page-title(style="background-image: url('/images/headers/header-userszone.jpg'); padding: 120px 0;" )
     .container.clearfix
       h2= title
       span= subtitle
@@ -14,13 +12,7 @@ block content
         .col-md-3
           include ../includes/users-menu
         .col-md-9.px-5
-          h3.mb-5= sectiontitle
-          if successsave
-            .alert.alert-success
-              strong Thank you!
-              br
-              | Your contact has been saved successfully. We will contact you to answer your questions.
-          
+          h3.mb-5.admintitle= sectiontitle     
           form(method="POST" action='/contact-us/contact/' + contact.id + '/edit?_method=PUT')
             .form-row
               .col-sm-6.form-group
@@ -34,7 +26,7 @@ block content
                   maxlength= "150"
                   class=errors.firstname ? "is-invalid" : ""
                   value=contact.firstname
-                  required
+                  disabled 
                 )
                 if errors.firstname
                   #firstname.invalid-feedback= errors.firstname.message
@@ -50,7 +42,7 @@ block content
                   maxlength="150"
                   class=errors.lastname ? "is-invalid" : ""
                   value=contact.lastname
-                  required
+                  disabled 
                 )
                 if errors.lastname
                   #lastname.invalid-feedback= errors.lastname.message
@@ -66,7 +58,7 @@ block content
                   maxlength="15"
                   class=errors.phone ? "is-invalid" : ""
                   value=contact.phone
-                  required
+                  disabled 
                 )
                 if errors.phone
                   #phone.invalid-feedback= errors.phone.message
@@ -82,7 +74,7 @@ block content
                   maxlength="255"         
                   class=errors.email ? "is-invalid" : ""
                   value=contact.email
-                  required
+                  disabled 
                 )
                 if errors.email
                   #email.invalid-feedback= errors.email.message
@@ -98,7 +90,7 @@ block content
                   maxlength="255"
                   class=errors.subject ? "is-invalid" : ""
                   value=contact.subject
-                  required
+                  disabled 
                 )
                 if errors.subject
                   #subject.invalid-feedback= errors.subject.message
@@ -113,7 +105,7 @@ block content
                   cols= "30"
                   maxlength="2000"
                   class=errors.comment ? "is-invalid" : ""
-                  required
+                  disabled 
                 )=contact.comment
                 if errors.comment
                   #comment.invalid-feedback= errors.comment.message                     
@@ -123,5 +115,20 @@ block content
                 type="hidden"
                 value="Answered"
                 )
+              .col-sm-12.form-group
+                label(for="answer" class="label-color font-weight-bold") Answer (*)
+                textarea.form-control#answer(
+                  name="answer"
+                  placeholder="Enter the answer for this comment or message"
+                  title= "Answer is required. Enter your answer"
+                  rows= "10"
+                  cols= "30"
+                  maxlength="2000"
+                  class=errors.comment ? "is-invalid" : ""
+                  required
+                )=contact.answer
+                if errors.answer
+                  #answer.invalid-feedback= errors.answer.message 
+
               button.btn.btn-primary(type="submit") Submit
               a(href="/contact-us/table-contacts" class="btn btn-secondary ml-3") Cancel

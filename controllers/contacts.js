@@ -55,9 +55,9 @@ exports.AdminItems = function(req, res) {
         console.log(contacts)
 
         res.render('contact-us/table-contacts', { 
-            title: 'User zone', 
-            subtitle:'Admin user here',
-            sectiontitle: 'Admin items - Contact us',
+            title: 'Users Zone', 
+            subtitle:'Manage the content of your website and keep it update.',
+            sectiontitle: 'Admin items - Contact us', 
             contacts: contacts 
         });
     });
@@ -84,9 +84,9 @@ exports.EditItem = function(req, res) {
         console.log(contact)
 
         res.render('contact-us/edit-contact', { 
-            title: 'User zone', 
-            subtitle:'Admin user here',
-            sectiontitle: 'Edit item - Contact us',
+            title: 'Users Zone', 
+            subtitle:'Manage the content of your website and keep it update.',
+            sectiontitle: 'Edit item - Contact us', 
             contact: contact,
             errors: [] 
         });

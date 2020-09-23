@@ -8,7 +8,7 @@ block content
   )
     .container.clearfix
       h2= title
-      span Discover the latest news, events and useful information for you
+      span= subtitle
       
   section#content.custom-my-80
     .container.clearfix
@@ -16,7 +16,7 @@ block content
         each course in courses
           .col-md-4.mb-5
             .card.course-card.hover-effect.border-0
-              a(href='/courses/' + course.id)
+              a(href='/courses/course/' + course.id)
                 img(
                   class="card-img-top" 
                   src="/images/news/examplenews-01.jpg" 
@@ -24,14 +24,12 @@ block content
                 )  
               .card-body
                 h3.card-title.font-weight-bold.mb-2
-                  a(href='/courses/' + course.id)= course.headline  
+                  a(href='/courses/course/' + course.id)= course.headline  
                 p.mb-2.card-title-sub.text-uppercase.font-weight-normal.ls1= course.clasify
                 p.card-text.text-black-50.mb-1= course.abstract
          
               .card-footer.py-3.d-flex.justify-content-between.align-items-center.bg-white.text-muted
-                .badge.alert-primary= course.delivert
-                a(href="") Enroll
-
+                .badge.alert-primary= course.delivery
         else
           .col-md-12
             p We don't have any courses at this time. Pease check back later.

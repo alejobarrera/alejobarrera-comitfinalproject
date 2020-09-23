@@ -4,7 +4,7 @@ block content
   section#page-title(style="background-image: url('/images/headers/header-userszone.jpg'); padding: 120px 0;" )
     .container.clearfix
       h2= title
-      span We are here to answer all your questions about us or our services.
+      span= subtitle
 
   section#content.custom-my-80
     .container-fluid.cleanfix
@@ -12,8 +12,7 @@ block content
         .col-md-3
           include ../includes/users-menu
         .col-md-9.px-5
-          h3.mb-5= subtitle
-          p Fill the form with the information about news, events or announcements. Remember the fields with (*) asterisk are mandatories. 
+          h3.mb-5.admintitle= sectiontitle
           form(method="POST")
             .form-row
               .col-12.form-group
@@ -34,9 +33,9 @@ block content
               .col-12.col-md-6.form-group
                 label(for="category" class="font-weight-bold") Category (*)
                   select.form-control#delivery(name="category")
-                    option(value="Online") Online
-                    option(value="In Class") In Class
-                    option(value="Blended") Blended
+                    option(value="Foreign languages") Foreign languages
+                    option(value="Programming and coding") Programing and coding
+                    option(value="Blended") Arts
 
               .col-12.col-md-4.form-group
                 label(for="delivery" class="font-weight-bold") Delivery (*)

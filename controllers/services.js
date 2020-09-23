@@ -8,14 +8,18 @@ exports.listItems = function(req, res) {
         if (err) console.log(err)
         
         console.log(services)
-        res.render('services/list-services', { title: 'Services', services: services });
+        res.render('services/list-services', { 
+            title: 'Services', 
+            subtitle: 'Discover how we can help you and improve your skills',
+            services: services 
+        });
     });
 };
 //Show a form to add services and save them on the database
 exports.AddItem = function(req, res) {
     res.render('services/add-service', {             
         title: 'User zone', 
-        subtitle:'Admin user here',
+        subtitle:'Manage the content of your website and keep it update.',
         sectiontitle: 'Add item - Services', 
         service: {}, 
         errors: [] 
@@ -53,7 +57,7 @@ exports.AdminItems = function(req, res) {
         console.log(services)
         res.render('services/table-services', { 
             title: 'User zone', 
-            subtitle:'Admin user here',
+            subtitle:'Manage the content of your website and keep it update.',
             sectiontitle: 'Admin items - Services',
             services: services 
         });
@@ -68,7 +72,11 @@ exports.ShowItem = function(req, res) {
         if (err) console.log(err)
         
         console.log(service)
-        res.render('services/show-service', { title: 'Fulltext', service: service });
+        res.render('services/show-service', { 
+            title: 'Services', 
+            subtitle: 'Discover how we can help you and improve your skills',
+            service: service 
+        });
     });
 };
 //Delete an item from the database
@@ -97,7 +105,7 @@ exports.EditItem = function(req, res) {
 
         res.render('services/edit-service', { 
             title: 'User zone', 
-            subtitle:'Admin user here',
+            subtitle:'Manage the content of your website and keep it update.',
             sectiontitle: 'Edit item - Service',
             service: service,
             errors: [] 

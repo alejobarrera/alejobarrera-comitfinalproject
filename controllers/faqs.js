@@ -8,12 +8,22 @@ exports.listItems = function(req, res) {
         if (err) console.log(err)
         
         console.log(faqs)
-        res.render('faqs/list-faqs', { title: 'FAQs', faqs: faqs });
+        res.render('faqs/list-faqs', { 
+            title: 'FAQs', 
+            subtitle: 'Discover a quick answer to your questions',
+            faqs: faqs 
+        });
     });
 };
 //Show a form to add faqs and save them on the database
 exports.AddItem = function(req, res) {
-    res.render('faqs/add-faq', { title: 'New FAQ', faq: {}, errors: [] });
+    res.render('faqs/add-faq', { 
+        title: 'Users Zone', 
+        subtitle:'Manage the content of your website and keep it update.',
+        sectiontitle: 'Add item - FAQs',  
+        faq: {}, 
+        errors: [] 
+    });
 };
 //Save the new faq on the database
 exports.CreateItem = function(req, res) {
@@ -40,7 +50,12 @@ exports.AdminItems = function(req, res) {
         if (err) console.log(err)
         
         console.log(faqs)
-        res.render('faqs/table-faqs', { title: 'All faqs', faqs: faqs });
+        res.render('faqs/table-faqs', { 
+            title: 'Users Zone', 
+            subtitle:'Manage the content of your website and keep it update.',
+            sectiontitle: 'Admin items - FAQs',  
+            faqs: faqs 
+        });
     });
 };
 //Delete an item from the database
@@ -68,9 +83,9 @@ exports.EditItem = function(req, res) {
         console.log(faq)
 
         res.render('faqs/edit-faq', { 
-            title: 'User zone', 
-            subtitle:'Admin user here',
-            sectiontitle: 'Edit item - Faqs',
+            title: 'Users Zone', 
+            subtitle:'Manage the content of your website and keep it update.',
+            sectiontitle: 'Edit item - FAQs', 
             faq: faq,
             errors: [] 
         });

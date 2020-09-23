@@ -3,6 +3,7 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+
 var sassMiddleware = require('node-sass-middleware');
 //Udload files
 //var formidableMiddleware = require('express-formidable');
@@ -29,6 +30,8 @@ var CoursesRouter = require('./routes/courses');
 var PostRouter = require('./routes/posts');
 var FAQsRouter = require('./routes/faqs');
 var ContactRouter = require('./routes/contact-us');
+
+var UserRouter = require('./routes/admin');
 
 
 var app = express();
@@ -62,6 +65,8 @@ app.use('/courses', CoursesRouter);
 app.use('/posts', PostRouter);
 app.use('/faqs', FAQsRouter);
 app.use('/contact-us', ContactRouter);
+
+app.use('/admin', UserRouter);
 
 
 // catch 404 and forward to error handler
