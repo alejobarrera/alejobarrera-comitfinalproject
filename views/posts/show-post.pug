@@ -11,10 +11,24 @@ block content
       .row
         .col-md-8.mb-5
           h2= post.headline
+          img(
+            class="card-img-top" 
+            src="/images/news/examplenews-01.jpg" 
+            alt="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+          )  
           p= post.abstract
           p= post.fulltext
-        
-        .col-md-4
-          h3 Lastest post
+          span.font-weight-bold Author: 
+          span= post.author
+          br
+          span.font-weight-bold Autor's Email: 
+          span= post.authoremail
+          br
+          span.font-weight-bold Source: 
+          span= post.source
+          br
+          span.font-weight-bold Source's Website: 
+          span= post.sourceurl
+
 
 

@@ -13,14 +13,10 @@ block content
           h2 Frequently asked questions
           p A list of questions and answers relating to our organization.
       .row
-        .col-md-8
-          #accordion
-            each faq in faqs
+          each faq in faqs
+            .col-md-4
               .card
                 .card-header
-                  a.card-link(data-toggle="collapse" href="#" + faq.id)= faq.question
-                div(id=faq.id class="collapse" data-parent="#accordion")
+                  h3= faq.question
                   .card-body
                     p= faq.answer
-
-        .col-md-4

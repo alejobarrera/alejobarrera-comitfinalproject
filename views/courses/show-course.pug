@@ -11,5 +11,19 @@ block content
       .row
         .col-md-10.mb-5
           h2= course.headline
+          img(
+                  class="card-img-top" 
+                  src="/images/news/examplenews-01.jpg" 
+                  alt="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+                )  
           p= course.abstract
           p= course.fulltext
+          h3 More information
+          span.font-weight-bold Name: 
+          span= course.contactname
+          br
+          span.font-weight-bold Email: 
+          span= course.contactemail
+          br
+          span.font-weight-bold Phone: 
+          span= course.contactphone
